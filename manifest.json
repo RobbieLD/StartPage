@@ -1,0 +1,17 @@
+{
+  "name": "New Tab Page",
+  "manifest_version": 2,
+  "version": "1.0",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "https://api.unsplash.com/",
+    "http://api.football-data.org/",
+    "https://api.openweathermap.org/",
+    "https://www.cricket.com.au/",
+    "https://api.ffa.football/",
+    "https://dev.azure.com/",
+    "https://track.calrom.com/"
+  ]
+}

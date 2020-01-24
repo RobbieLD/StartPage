@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/theme.css" rel="stylesheet" type="text/css">
+    <link href="css/clock.css" rel="stylesheet" type="text/css">
+    <link href="fontawesome/css/all.css" rel="stylesheet" type="text/css">
+    <style id="clock-animations"></style>
+    <title>New Tab</title>
+</head>
+
+<body id="body">
+    <header id="header" class="header darkvibrant" data-swatch="backgroundColor">
+        <span class="icon header__icon">
+            <a href="http://mail.google.com" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fas fa-envelope"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="http://facebook.com" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-facebook"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="http://web.whatsapp.com" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="https://discordapp.com/channels/@me" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-discord"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="https://web.telegram.org/#/im" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-telegram"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="http://youtube.com" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-youtube"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="https://drive.google.com" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-google-drive"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="https://maps.google.co.uk/" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fas fa-map-marked-alt"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="https://www.amazon.co.uk/" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-amazon"></i></a>
+        </span>
+        <span class="icon header__icon">
+            <a href="https://www.ebay.co.uk/" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-ebay"></i></a>
+        </span>
+        
+
+        <div class="sport">
+            <!-- Soccer -->
+            <span class="soccer__logo"><a class="sport__logo__link" target="_blank" href="https://www.google.com/search?q=socceroos"><img class="soccer__logo__img" src="img/soc.png" alt="lfc"></a></span>
+            <span class="soccer__previoussoccer">Previous Match</span>
+            <span class="soccer__nextsoccer">Next Match</span>
+
+            <!-- Cricekt -->
+            <span class="cricket__logo"><a class="sport__logo__link" href="https://www.google.com/search?q=australia+cricket+teams&oq=australia+cricket+team" target="_blank"><img class="cricket__logo__img" src="img/aus.png" alt="aus"></a></span>
+            <span class="cricket__cricketseries">The Ashes</span>
+            <span class="cricket__cricketteams">Australia vs England</span>
+
+            <!-- Football -->
+            <span class="football__logo"><a class="sport__logo__link" target="_blank" href="https://www.google.com/search?q=lfc"><img class="football__logo__img" src="img/lfc.png" alt="lfc"></a></span>
+            <span class="football__previousfootball">Previous Match</span>
+            <span class="football__nextfootball">Next Match</span>
+        </div>
+    </header>
+
+    <main class="main" id='main'>
+        <!-- Pull Requests -->
+        <div id="pullrequestspanel" class="pullrequests panel muted" data-swatch="backgroundColor">
+            <div class="panel__title vibrant" data-swatch="backgroundColor" id="pullrequeststitle">
+                <a href="https://dev.azure.com/calromltd/_git/InclusiveTour/pullrequests?_a=mine" target="_blank">Azure
+                    Pull Requests</a>
+                <span id="pullRequestsRefreshBtn" class="icon icon--clickable icon--panel"><i class="fas fa-sync-alt"></i></span>
+            </div>
+            <div id="pullrequests"></div>
+        </div>
+        <!-- Work Items -->
+        <div id="workitemspanel" class="workitems panel muted" data-swatch="backgroundColor">
+            <div class="panel__title vibrant" data-swatch="backgroundColor" id="workitemstitle">
+                <a href="https://dev.azure.com/calromltd/InclusiveTour/_workitems/assignedtome/" target="_blank">Azure
+                    Work Items</a>
+                <span id="workItemsRefreshBtn" class="icon icon--clickable icon--panel"><i class="fas fa-sync-alt"></i></span>
+            </div>
+            <div id="workitems"></div>
+        </div>
+        <!-- Issues -->
+        <div id="issuespanel" class="issues panel muted" data-swatch="backgroundColor">
+            <div class="panel__title vibrant" data-swatch="backgroundColor" id="issuestitle">
+                <a href="https://track.calrom.com" target="_blank">YouTrack Issues</a>
+                <span id="issueRefreshBtn" class="icon icon--clickable icon--panel"><i class="fas fa-sync-alt"></i></span>
+            </div>
+            <div id="issues"></div>
+        </div>
+        <!-- Clock -->
+        <div id="clock" class="clock muted" data-swatch="backgroundColor">
+            <svg viewBox="-500 -500 1000 1000">
+                <defs>
+                    <filter id="dropshadow" width="130%" height="130%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+                        <feOffset dx="1" dy="1" result="offsetblur" />
+                        <feComponentTransfer>
+                            <feFuncA type="linear" slope="0.5" />
+                        </feComponentTransfer>
+                        <feMerge>
+                            <feMergeNode />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <!-- Weather marker arrow -->
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" class="darkvibrant" data-swatch="fill">
+                        <path d="M 0 1 A 20 20 0 0 0 10 5 A 20 20 0 0 0 0 9 L 3 5 z" />
+                    </marker>
+
+                    <!-- Sun fill -->
+                    <radialGradient id="sunFill">
+                        <stop offset="27%" stop-color="rgba(242,181,10,1)" />
+                        <stop offset="93%" stop-color="rgba(252,224,56,1)" />
+                        <stop offset="100%" stop-color="rgba(241,239,104,1)" />
+                    </radialGradient>
+
+                    <radialGradient id="moonFill">
+                        <stop offset="27%" stop-color="rgba(220,220,220,1)" />
+                        <stop offset="93%" stop-color="rgba(250,250,250,1)" />
+                        <stop offset="100%" stop-color="rgba(255,255,255,1)" />
+                    </radialGradient>
+
+                    <!-- Sun Glow -->
+                    <filter id="sunGlow" height="300%" width="300%" x="-75%" y="-75%">
+                        <!-- Thicken out the original shape -->
+                        <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken" />
+
+                        <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+                        <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+
+                        <!-- Change the colour -->
+                        <feFlood flood-color="rgb(241,239,104)" result="glowColor" />
+
+                        <!-- Color in the glows -->
+                        <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+
+                        <!-- Layer the effects together -->
+                        <feMerge>
+                            <feMergeNode in="softGlow_colored" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+
+                    <!-- Moon Glow -->
+                    <filter id="moonGlow" height="300%" width="300%" x="-75%" y="-75%">
+                        <!-- Thicken out the original shape -->
+                        <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken" />
+
+                        <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+                        <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+
+                        <!-- Change the colour -->
+                        <feFlood flood-color="rgb(255,255,255)" result="glowColor" />
+
+                        <!-- Color in the glows -->
+                        <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+
+                        <!--	Layer the effects together -->
+                        <feMerge>
+                            <feMergeNode in="softGlow_colored" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+
+                    <!-- Sun Mask -->
+                    <clipPath id="sunMask">
+                        <path fill="black" d="
+                        M -300 0
+                        L -275 0
+                        A 50 50 0 0 1 -175 0
+                        L 175 0
+                        A 50 50 0 0 1 275 0
+                        L 300 0
+                        A 300 300 0 0 0 -300 0 
+                        z
+                        "></path>
+                    </clipPath>
+
+                    <!-- Luna Mask -->
+                    <clipPath id="lunaMask">
+                        <circle fill="black" cx="0" cy="0" r="150"></circle>
+                    </clipPath>
+
+                    <!-- Moon Mask -->
+
+                    <!-- Numberls Path -->
+                    <path id="numberalsPath" d="M 400 0 A 400 400 0 0 1 -400 0 A 400 400 0 0 1 400 0" fill="none" />
+
+                    <!-- Months Path -->
+                    <path id="monthsPath" d="M 460 0 A 460 460 0 0 1 -460 0 A 460 460 0 0 1 460 0" fill="none" />
+
+                    <!-- Humidity Path -->
+                    <path id="humidityPath" d="M 0 150 A 150 150 0 0 0 150 0" fill="none"></path>
+
+                    <!-- Pressure Path -->
+                    <path id="pressurePath" d="M 0 300 A 300 300 0 0 0 300 0" fill="none"></path>
+
+                    <!-- Sun times paths -->
+                    <path id="sunrisePath" d="M -300 0 A 300 300 0 0 1 0 -300" fill="none"></path>
+                    <path id="sunsetPath" d="M 0 -300 A 300 300 0 0 1 0 300" fill="none"></path>
+
+                    <!-- Moon times path -->
+                    <path id="moonrisePath" d="M -150 0 A 150 150 0 0 1 0 -150" fill="none"></path>
+                    <path id="moonsetPath" d="M 0 -150 A 150 150 0 0 1 0 150" fill="none"></path>
+
+                    <!-- Weeks Path -->
+                    <path id="weekPath" d="M -275 0 A 50 50 0 0 1 -175 0 A 50 50 0 0 1 -275 0" fill="none"></path>
+
+                    <!-- Days of the week mask -->
+                    <mask id="daysOfWeekMask">
+                        <path d="
+                       M -300 0
+                       A 300 300 0 0 0 0 300
+                       L 0 275
+                       A 50 50 0 0 1 0 175
+                       L 0 150
+                       A 150 150 0 0 1 -150 0
+                       L -175 0
+                       A 50 50 0 0 1 -275 0
+                       z" fill="white">
+                    </mask>
+
+                    <!-- Days of the month mask -->
+                    <mask id="daysOfMonthMask">
+                        <path d="
+                       M 300 0
+                       A 300 300 0 0 1 0 300
+                       L 0 275
+                       A 50 50 0 0 0 0 175
+                       L 0 150
+                       A 150 150 0 0 0 150 0
+                       L 175 0
+                       A 50 50 0 0 0 275 0
+                       z" fill="white">
+                    </mask>
+                </defs>
+
+                <!-- Sun background -->
+                <path d="
+                    M -300 0 
+                    A 300 300 0 0 1 300 0 
+                    L 275 0
+                    A 50 50 0 0 0 175 0
+                    L 150 0 
+                    A 150 150 0 0 0 -150 0 
+                    L -175 0
+                    A 50 50 0 0 0 -275 0
+                    z
+                " data-swatch="fill" class="clock__sun--fill vibrant"></path>
+
+                <!-- Sun path -->
+                <path d="M -247 -47 A 250 250 0 0 1 247 -47" class="clock__sun--path"></path>
+
+                <!-- Moon path -->
+                <path d="M -179 -10 A 180 180 0 0 1 179 -10" class="clock__sun--path"></path>
+
+                <!-- Sun -->
+                <circle id="sun" class="clock__sun" cx="0" cy="-250" r="30" clip-path="url(#sunMask)" filter="url(#sunGlow)" fill="url('#sunFill')"></circle>
+
+                <!-- Moon -->
+                <g clip-path="url(#sunMask)">
+                    <g id="moonGroup" filter="url(#moonGlow)">
+                        <title></title>
+                        <clipPath id="moonMask">
+                            <circle cx="0" cy="0" r="18"></circle>
+                        </clipPath>
+                        <circle id="moon" class="clock__moon" cx="0" cy="0" r="18" clip-path="url(#moonMask)" fill="url('#moonFill')"></circle>
+                        <!-- <circle id="moonShadow" class="clock__moon--shadow" cx="0" cy="0" r="18" clip-path="url(#moonMask)"> -->
+                        <path d="M -40 18 L -40 -18 L 0 -18 A 18 18 0 0 1 0 18 z" id="moonShadow" class="clock__moon--shadow" cx="0" cy="0" r="18" clip-path="url(#moonMask)"></path>
+                    </g>
+                </g>
+
+                <!-- Numberals  -->
+                <g>
+                    <text class="clock__numbers clock__numbers--XII lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">XII</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--IX lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">IX</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--I lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">I</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--II lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">II</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--III lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">III</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--IV lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">IV</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--V lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">V</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--VI lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">VI</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--VII lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">VII</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--VIII lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">VIII</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--X lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">X</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__numbers clock__numbers--XI lightmuted" data-swatch="fill">
+                        <textPath xlink:href="#numberalsPath">
+                            <tspan dy="95">XI</tspan>
+                        </textPath>
+                    </text>
+                </g>
+
+                <!-- Months -->
+                <g>
+                    <!-- Year progress bar -->
+                    <path id="yearProgress" class="clock__year darkvibrant" data-swatch="stroke" d="
+                        M 0 -472
+                        A 472 472 0 0 1 472 0
+                    "></path>
+
+                    <circle class="clock__year--base darkvibrant" data-swatch="stroke" cx="0" cy="0" r="472"></circle>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>January</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>February</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>March</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>April</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>May</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>June</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>July</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>August</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>September</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>October</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>November</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__months lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#monthsPath">
+                            <tspan>December</tspan>
+                        </textPath>
+                    </text>
+                </g>
+
+                <!-- Outer clock circle  -->
+                <circle class="clock__dial muted" data-swatch="stroke" cx="0" cy="0" r="450" stroke-width="6" fill="none"></circle>
+
+                <!-- Temperature -->
+                <g>
+                    <path class="clock__temperature darkvibrant" data-swatch="fill" d="
+                        M -300 0
+                        A 300 300 0 0 0 0 300
+                        L 0 275
+                        A 50 50 0 0 1 0 175
+                        L 0 150
+                        A 150 150 0 0 1 -150 0
+                        L -175 0
+                        A 50 50 0 0 1 -275 0
+                        z
+                    "></path>
+
+                    <line x1="-12" x2="-14" y1="150" y2="175" class="clock__temperature--mark"></line>
+                    <line x1="-23" x2="-28" y1="148" y2="183" class="clock__temperature--mark"></line>
+                    <line x1="-22" x2="-24" y1="275" y2="299" class="clock__temperature--mark"></line>
+                    <line x1="-40" x2="-47" y1="255" y2="296" class="clock__temperature--mark"></line>
+                    <line x1="-35" x2="-70" y1="146" y2="292" class="clock__temperature--mark"></line>
+                    <line x1="-46" x2="-93" y1="143" y2="285" class="clock__temperature--mark"></line>
+                    <line x1="-57" x2="-115" y1="139" y2="277" class="clock__temperature--mark"></line>
+                    <line x1="-68" x2="-136" y1="134" y2="267" class="clock__temperature--mark"></line>
+                    <line x1="-78" x2="-157" y1="128" y2="256" class="clock__temperature--mark"></line>
+                    <line x1="-88" x2="-176" y1="121" y2="243" class="clock__temperature--mark"></line>
+                    <line x1="-97" x2="-195" y1="114" y2="228" class="clock__temperature--mark"></line>
+                    <line x1="-106" x2="-212" y1="106" y2="212" class="clock__temperature--mark"></line>
+                    <line x1="-114" x2="-228" y1="97" y2="195" class="clock__temperature--mark"></line>
+                    <line x1="-121" x2="-243" y1="88" y2="176" class="clock__temperature--mark"></line>
+                    <line x1="-128" x2="-256" y1="78" y2="157" class="clock__temperature--mark"></line>
+                    <line x1="-134" x2="-267" y1="68" y2="136" class="clock__temperature--mark"></line>
+                    <line x1="-139" x2="-277" y1="57" y2="115" class="clock__temperature--mark"></line>
+                    <line x1="-143" x2="-285" y1="46" y2="93" class="clock__temperature--mark"></line>
+                    <line x1="-146" x2="-292" y1="35" y2="70" class="clock__temperature--mark"></line>
+
+                    <line x1="-148" x2="-180" y1="23" y2="30" class="clock__temperature--mark"></line>
+                    <line x1="-260" x2="-296" y1="40" y2="47" class="clock__temperature--mark"></line>
+
+                    <line x1="-269" x2="-299" y1="21" y2="24" class="clock__temperature--mark"></line>
+                    <line x1="-150" x2="-180" y1="12" y2="15" class="clock__temperature--mark"></line>
+
+                    <!-- Temperature max min -->
+                    <path id="maxmintemp" mask="url(#daysOfWeekMask)" class="clock__temperature--max-min lightvibrant" data-swatch="fill" d="M -150 0 A 150 150 0 0 0 0 150 L 0 300 A 300 300 0 0 1 -300 0 z"></path>
+
+                    <line id="currenttemp" mask="url(#daysOfWeekMask)" class="clock__temperature--current darkvibrant" data-swatch="stroke"></line>
+                    <text id="currentTempLabel" class="clock__label darkmuted" data-swatch="fill" x="0" y="0"></text>
+                </g>
+
+                <!-- Humidity -->
+                <g>
+                    <path class="clock__humidity lightmuted" data-swatch="fill" d="
+                                M 0 150
+                                L 0 175
+                                A 50 50 0 0 1 50 220
+                                A 225 225 0 0 0 220 50
+                                A 50 50 0 0 1 175 0
+                                L 150 0
+                                A 150 150 0 0 1 0 150
+                                z"></path>
+
+
+                    <line x1="177" y1="31" x2="190" y2="34" class="clock__humidity--line-big"></line>
+                    <line x1="169" y1="62" x2="211" y2="77" class="clock__humidity--line-big"></line>
+                    <line x1="156" y1="90" x2="195" y2="113" class="clock__humidity--line-big"></line>
+                    <line x1="138" y1="116" x2="172" y2="145" class="clock__humidity--line-big"></line>
+                    <line x1="116" y1="138" x2="145" y2="172" class="clock__humidity--line-big"></line>
+                    <line x1="90" y1="156" x2="113" y2="195" class="clock__humidity--line-big"></line>
+                    <line x1="62" y1="169" x2="77" y2="211" class="clock__humidity--line-big"></line>
+                    <line x1="31" y1="177" x2="32" y2="190" class="clock__humidity--line-big"></line>
+
+                    <line x1="193" y1="52" x2="217" y2="58" class="clock__humidity--line-little"></line>
+                    <line x1="181" y1="85" x2="204" y2="95" class="clock__humidity--line-little"></line>
+                    <line x1="164" y1="115" x2="184" y2="129" class="clock__humidity--line-little"></line>
+                    <line x1="141" y1="141" x2="159" y2="159" class="clock__humidity--line-little"></line>
+                    <line x1="115" y1="164" x2="129" y2="184" class="clock__humidity--line-little"></line>
+                    <line x1="85" y1="181" x2="95" y2="204" class="clock__humidity--line-little"></line>
+                    <line x1="52" y1="193" x2="58" y2="217" class="clock__humidity--line-little"></line>
+
+                    <path id="himidityArrow" class="clock__weather-radar__point vibrant" mask="url(#daysOfMonthMask)" data-swatch="fill"></path>
+
+                    <text id="humidityLabel" class="clock__humidity--label darkvibrant" data-swatch="fill">
+                        <textPath xlink:href="#humidityPath">
+                            <tspan dx="20" dy="25"></tspan>
+                        </textPath>
+                    </text>
+
+                </g>
+
+                <!-- Pressure -->
+                <g>
+                    <path d="
+                            M 0 275
+                            L 0 300
+                            A 300 300 0 0 0 300 0
+                            L 275 0
+                            A 50 50 0 0 1 220 50
+                            A 225 225 0 0 1 50 220
+                            A 50 50 0 0 1 0 275
+                            z
+                            " class="clock__pressure darkmuted" data-swatch="fill"></path>
+
+                    <line x1="217" y1="58" x2="241" y2="65" class="clock__pressure--line-little"></line>
+                    <line x1="204" y1="95" x2="227" y2="106" class="clock__pressure--line-little"></line>
+                    <line x1="184" y1="129" x2="205" y2="143" class="clock__pressure--line-little"></line>
+                    <line x1="159" y1="159" x2="177" y2="177" class="clock__pressure--line-little"></line>
+                    <line x1="129" y1="184" x2="143" y2="205" class="clock__pressure--line-little"></line>
+                    <line x1="95" y1="204" x2="106" y2="227" class="clock__pressure--line-little"></line>
+                    <line x1="58" y1="217" x2="65" y2="241" class="clock__pressure--line-little"></line>
+
+                    <line x1="255" y1="45" x2="271" y2="48" class="clock__pressure--line-big"></line>
+                    <line x1="211" y1="77" x2="258" y2="94" class="clock__pressure--line-big"></line>
+                    <line x1="195" y1="113" x2="238" y2="138" class="clock__pressure--line-big"></line>
+                    <line x1="172" y1="145" x2="211" y2="177" class="clock__pressure--line-big"></line>
+                    <line x1="145" y1="172" x2="177" y2="211" class="clock__pressure--line-big"></line>
+                    <line x1="113" y1="195" x2="138" y2="238" class="clock__pressure--line-big"></line>
+                    <line x1="77" y1="211" x2="94" y2="258" class="clock__pressure--line-big"></line>
+                    <line x1="44" y1="250" x2="48" y2="271" class="clock__pressure--line-big"></line>
+
+                    <path id="pressureArrow" class="clock__weather-radar__point vibrant" data-swatch="fill" mask="url(#daysOfMonthMask)"></path>
+                    <text id="pressureLabel" class="clock__pressure--label lightvibrant" data-swatch="fill">
+                        <textPath xlink:href="#pressurePath">
+                            <tspan dx="20" dy="-10"></tspan>
+                        </textPath>
+                    </text>
+
+                </g>
+
+                <!-- Dial luna phase  -->
+                <path d="M -300 -150 L 0 -150 A 130 150 0 0 1 0 150 L -300 150 z" id="lunaPhase" clip-path="url(#lunaMask)" class="clock__dial--moon-phase"></path>
+
+                <!-- Dial inner circle  -->
+                <g class="clock__dial--inner lightvibrant" data-swatch="fill">
+                    <circle class="clock__dial muted" data-swatch="stroke" cx="0" cy="0" r="150" stroke="black" stroke-width="6"></circle>
+                </g>
+
+                <!-- Dial outer circle -->
+                <circle class="clock__dial muted" data-swatch="stroke" cx="0" cy="0" r="300" stroke="black" stroke-width="6" fill="none"></circle>
+
+                <!-- Dial six straight lines -->
+                <line class="clock__dial muted" data-swatch="stroke" x1="0" x2="0" y1="150" y2="175" stroke="black" stroke-width="6"></line>
+                <line class="clock__dial muted" data-swatch="stroke" x1="0" x2="0" y1="275" y2="300" stroke="black" stroke-width="6"></line>
+
+                <line class="clock__dial muted" data-swatch="stroke" x1="150" x2="175" y1="0" y2="0" stroke="black" stroke-width="6"></line>
+                <line class="clock__dial muted" data-swatch="stroke" x1="275" x2="300" y1="0" y2="0" stroke="black" stroke-width="6"></line>
+
+                <line class="clock__dial muted" data-swatch="stroke" x1="-300" x2="-275" y1="0" y2="0" stroke="black" stroke-width="6"></line>
+                <line class="clock__dial muted" data-swatch="stroke" x1="-175" x2="-150" y1="0" y2="0" stroke="black" stroke-width="6"></line>
+
+                <!-- <line stroke="black" stroke-width="4" x1="0" y1="0" x2="50" y2="220"></line>  -->
+
+                <!-- Weather radar lines -->
+                <circle class="clock__weather-radar" x1="0" x2="0" r="25"></circle>
+                <circle class="clock__weather-radar" x1="0" x2="0" r="50"></circle>
+                <circle class="clock__weather-radar" x1="0" x2="0" r="75"></circle>
+                <circle class="clock__weather-radar" x1="0" x2="0" r="100"></circle>
+                <circle class="clock__weather-radar" x1="0" x2="0" r="125"></circle>
+
+                <text class="clock__weather__label vibrant" data-swatch="fill" x="-10" y="-110">N</text>
+                <text class="clock__weather__label vibrant" data-swatch="fill" x="-10" y="140">S</text>
+                <text class="clock__weather__label vibrant" data-swatch="fill" x="-140" y="10">W</text>
+                <text class="clock__weather__label vibrant" data-swatch="fill" x="110" y="10">E</text>
+
+                <!-- Weather radar arrow -->
+                <line id="weatherArrow" class="clock__weather-radar__arrow darkvibrant" data-swatch="stroke" marker-end="url(#arrow)" x1="0" x2="0" y1="0" y2="100"><title></title></line>
+
+                <!-- Sunrise/Sunset and Moonrise/Moonset Times -->
+                <g id="sunrise" class="clock__sunrise">
+                    <title></title>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-fill darkmuted" data-swatch="fill"></circle>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-stroke muted" data-swatch="stroke"></circle>
+
+                    <line x1="0" y1="0" x2="0" y2="-12" class="clock__clock-icon-hands vibrant minute" data-swatch="stroke"></line>
+                    <line x1="0" y1="0" x2="0" y2="-8" class="clock__clock-icon-hands vibrant hour" data-swatch="stroke"></line>
+
+                    <circle cx="0" cy="0" r="3" class="clock__clock-icon-dot vibrant" data-swatch="fill"></circle>
+                </g>
+
+                <g id="moonrise" class="clock__moonrise">
+                    <title></title>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-fill darkmuted" data-swatch="fill"></circle>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-stroke muted" data-swatch="stroke"></circle>
+                    
+                    <line x1="0" y1="0" x2="0" y2="-12" class="clock__clock-icon-hands vibrant minute" data-swatch="stroke"></line>
+                    <line x1="0" y1="0" x2="0" y2="-8" class="clock__clock-icon-hands vibrant hour" data-swatch="stroke"></line>
+
+                    <circle cx="0" cy="0" r="3" class="clock__clock-icon-dot vibrant" data-swatch="fill"></circle>
+                </g>
+
+                <g id="sunset" class="clock__sunset">
+                    <title></title>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-fill darkmuted" data-swatch="fill"></circle>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-stroke muted" data-swatch="stroke"></circle>
+
+                    <line x1="0" y1="0" x2="0" y2="-12" class="clock__clock-icon-hands vibrant minute" data-swatch="stroke"></line>
+                    <line x1="0" y1="0" x2="0" y2="-8" class="clock__clock-icon-hands vibrant hour" data-swatch="stroke"></line>
+
+                    <circle cx="0" cy="0" r="3" class="clock__clock-icon-dot vibrant" data-swatch="fill"></circle>
+                </g>
+
+                <g id="moonset" class="clock__moonset">
+                    <title></title>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-fill darkmuted" data-swatch="fill"></circle>
+                    <circle cx="0" cy="0" r="15" class="clock__clock-icon-stroke muted" data-swatch="stroke"></circle>
+
+                    <line x1="0" y1="0" x2="0" y2="-12" class="clock__clock-icon-hands vibrant minute" data-swatch="stroke"></line>
+                    <line x1="0" y1="0" x2="0" y2="-8" class="clock__clock-icon-hands vibrant hour" data-swatch="stroke"></line>
+
+                    <circle cx="0" cy="0" r="3" class="clock__clock-icon-dot vibrant" data-swatch="fill"></circle>
+                </g>
+
+  
+                <!-- Day of the month -->
+                <g>
+                    <path id="monthProgress" class="clock__month-progress darkvibrant" data-swatch="fill" d="M 225 -50 A 50 50 0 0 1 275 0 L 250 0 A 25 25 0 0 0 225 -25 z"></path>
+
+                    <text id="monthNumber" x="205" y="12" class="clock__month-day vibrant" data-swatch="fill">10</text>
+
+                    <circle cx="-225" cy="0" r="50" class="clock__dial clock_guage muted" data-swatch="stroke" stroke-width="4"></circle>
+                </g>
+
+                <!-- Icon -->
+                <g>
+                    <title></title>
+                    <circle cx="0" cy="225" r="50" class="clock__dial clock_guage muted" data-swatch="stroke" stroke-width="4"></circle>
+                    <image width="100" x="-50" y="175" id="iconElement"></image>
+                </g>
+
+                <!-- Day Of The Week -->
+                <g>
+                    <circle cx="225" cy="0" r="50" class="clock__dial clock_guage muted" data-swatch="stroke" stroke-width="4"></circle>
+
+                    <text class="clock__week clock__week-number darkmuted" data-swatch="fill">
+                        <textPath xlink:href="#weekPath">
+                            <tspan>M</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__week clock__week-number darkmuted" data-swatch="fill">
+                        <textPath xlink:href="#weekPath">
+                            <tspan>T</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__week clock__week-number darkmuted" data-swatch="fill">
+                        <textPath xlink:href="#weekPath">
+                            <tspan>W</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__week clock__week-number darkmuted" data-swatch="fill">
+                        <textPath xlink:href="#weekPath">
+                            <tspan>T</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__week clock__week-number darkmuted" data-swatch="fill">
+                        <textPath xlink:href="#weekPath">
+                            <tspan>F</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__week clock__week-number clock__week--end darkvibrant" data-swatch="fill">
+                        <textPath xlink:href="#weekPath">
+                            <tspan>S</tspan>
+                        </textPath>
+                    </text>
+
+                    <text class="clock__week clock__week-number clock__week--end darkvibrant" data-swatch="fill">
+                        <textPath xlink:href="#weekPath">
+                            <tspan>S</tspan>
+                        </textPath>
+                    </text>
+
+                    <circle class="clock__week-number darkvibrant" cx="-225" cy="30" r="13" data-swatch="fill"></circle>
+                    <text id="weekNumber" class="clock__week lightmuted" x="-233" y="35" data-swatch="fill">00</text>
+
+                    <g style="filter:url(#dropshadow)">
+                        <circle cx="-225" cy="0" r="10" class="vibrant" data-swatch="fill"></circle>
+                        <path id="weekArrow" class="vibrant" data-swatch="fill" stroke="none"></path>
+                    </g>
+                </g>
+
+                <!-- Hour Hand -->
+                <g class="clock__hour" style="filter:url(#dropshadow)">
+                    <path d="M -3 0 
+                            A 20 200 0 0 1 -5 -200 
+                            A 3 99 0 0 0 -5 -250 
+                            L 5 -250 
+                            A 3 99 0 0 0 5 -200 
+                            A 20 200 0 0 1 5 0
+                            z" class="clock__hour__hand muted" data-swatch="fill" storke="none"></path>
+                    <path d="M -12 -255
+                            A 22 22 0 1 0 12 -255
+                            A 13 50 0 0 1 3 -300 
+                            L -3 -300 
+                            A 13 50 0 0 1 -12 -255 
+                            z" class="clock__hour__hand muted" data-swatch="fill" storke="none"></path>
+                    <circle cx="0" cy="0" r="22" class="clock__hour__circle lightmuted" data-swatch="fill"></circle>
+                </g>
+
+                <!-- Minute Hand -->
+                <g class="clock__minute" style="filter:url(#dropshadow)">
+                    <path d="M -3 0 
+                        A 20 300 0 0 1 -5 -300 
+                        A 3 99 0 0 0 -5 -399 
+                        L 5 -399 
+                        A 3 99 0 0 0 5 -300 
+                        A 20 300 0 0 1 5 0
+                        z" class="clock__minute__hand lightmuted" data-swatch="fill" storke="none"></path>
+                    <path d="M -12 -399 
+                        A 20 20 0 1 0 12 -399 
+                        A 13 50 0 0 1 2 -450 
+                        L -2 -450 
+                        A 13 50 0 0 1 -12 -399
+                        z" class="clock__minute__hand lightmuted" data-swatch="fill" storke="none"></path>
+                    <circle cx="0" cy="0" r="18" class="clock__minute__circle muted" data-swatch="fill"></circle>
+                </g>
+
+                <!-- Second Hand -->
+                <g class="clock__second" style="filter:url(#dropshadow)">
+                    <path d="M -12 -399 A 15 15 0 1 0 12 -399 A 15 50 0 0 1 0 -450 A 15 50 0 0 1 -12 -399 z" class="clock__second__hand vibrant" fill="none" data-swatch="stroke" stroke-width="4"></path>
+                    <line class="clock__second__hand vibrant" x1="0" y1="78" x2="0" y2="-375" data-swatch="stroke" stroke-width="4" stroke-linecap="round"></line>
+                    <path d="M 14 110 A 20 20 0 1 0 -14 110 A 16 14 0 1 1 14 110" class="clock__second__hand--base vibrant" data-swatch="fill" stroke="none"></path>
+                    <circle cx="0" cy="0" r="10" class="clock__second__circle vibrant" data-swatch="fill"></circle>
+                </g>
+
+                <!-- Outer Circle -->
+                <circle class="clock__dial muted" data-swatch="stroke" cx="0" cy="0" r="495" fill="none" stroke-width="10"></circle>
+
+            </svg>
+        </div>
+    </main>
+
+    <footer class="footer darkmuted" data-swatch="backgroundColor">
+        <span class="footer__author">
+            <span id="viewBtn" title="Hide Panels" class="icon icon--clickable icon--settings"><i class="fas fa-image"></i></span>
+            By Rob Davis | Version 0.1 | <span title="" id="location"></span> | Unsplash Rate Limit <span id="rateLimit"></span>
+            | <span id="apiStats"></span> | Swatch <span id="swatches"></span>
+        </span>
+        <span id="imageCredit" class="footer__image-credit"></span>
+    </footer>
+
+    <script src="js/clockicon.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/colours.js"></script>
+    <script src="js/vibrant.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/sun.js"></script>
+    <script src="js/cricket.js"></script>
+    <script src="js/football.js"></script>
+    <script src="js/soccer.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/moon.js"></script>
+    <script src="js/azure.js"></script>
+    <script src="js/youtrack.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

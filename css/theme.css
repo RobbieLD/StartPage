@@ -1,0 +1,643 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    --heighlight-color: white;
+}
+
+/* Swatches */
+.swatch {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    margin-left: 2px;
+    vertical-align: bottom;
+}
+
+/* Clock */
+.clock {
+    grid-area: clock;
+    --width: 80vmin;
+    width: var(--width);
+    height: var(--width);
+    margin: auto;
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.clock__second {
+    transition: .5s;
+    animation: rotate-second 60s steps(60) infinite;
+
+}
+
+.clock__second__hand {
+    stroke: rgba(180, 0, 0, 1);
+}
+
+.clock__second__hand--base {
+    fill: rgba(180, 0, 0, 1);
+    stroke: none;
+}
+
+.clock__second__circle {
+    fill: rgba(180, 0, 0, 1);
+}
+
+.clock__minute {
+    transition: .5s;
+    animation: rotate-minute 3600s steps(360) infinite;
+}
+
+.clock__minute__hand {
+    fill: rgba(180, 180, 180, 1);
+}
+
+.clock__minute__circle {
+    fill: rgba(180, 180, 180, 1);
+}
+
+.clock__hour {
+    transition: .5s;
+    animation: rotate-hour 43200s steps(432) infinite;
+}
+
+.clock__hour__hand {
+    fill: rgba(50, 50, 50, 1);
+}
+
+.clock__hour__circle {
+    fill: rgba(50, 50, 50, 1);
+}
+
+.clock__dial {
+    stroke: rgba(0, 0, 0, 1);
+}
+
+.clock_guage {
+    fill: rgba(255, 255, 255, 0.1);
+}
+
+.clock__weather-radar {
+    stroke: rgba(0, 0, 0, 0.2);
+    stroke-width: 1px;
+    fill: none;
+}
+
+.clock__weather-radar__point {
+    fill: rgba(0, 0, 0, 1);
+    stroke: none;
+}
+
+.clock__weather-radar__arrow {
+    stroke: rgba(0, 0, 0, 1);
+    stroke-width: 4;
+}
+
+.clock__weather__label {
+    font-size: 3em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.clock__dial--inner {
+    fill: rgba(0, 180, 255, 0.2);
+}
+
+.clock__dial--ticks {
+    stroke-width: 4px;
+    stroke: rgba(0, 0, 0, 0.2);
+}
+
+.clock__dial--moon-phase {
+    fill: rgba(0, 0, 0, 0.3);
+}
+
+.clock__sun {}
+
+.clock__sun--fill {
+    fill: rgba(194, 86, 15, 0.2);
+}
+
+.clock__sun--path {
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 1px;
+    fill: none;
+}
+
+.clock__moon {
+}
+
+.clock__humidity {
+    fill: rgba(50,50,50,0.6);
+}
+
+.clock__humidity--line-big {
+    stroke-width: 2px;
+    stroke: rgba(0, 0, 0, 0.2);
+}
+
+.clock__humidity--line-little {
+    stroke-width: 2px;
+    stroke: rgba(0, 0, 0, 0.1);
+}
+
+.clock__humidity--label {
+    font-size: 1.5em;
+    letter-spacing: 86px;
+}
+
+.clock__pressure {
+    fill: rgba(0,0,0,0.6);
+}
+
+.clock__pressure--line-big {
+    stroke-width: 2px;
+    stroke: rgba(0, 0, 0, 0.2);
+}
+
+.clock__pressure--label {
+    font-size: 1.5em;
+    letter-spacing: 60px;
+}
+
+.clock__pressure--line-little {
+    stroke-width: 2px;
+    stroke: rgba(0, 0, 0, 0.1);
+}
+
+
+.clock__clock-icon-stroke {
+    stroke: rgba(0, 0, 0, 1);
+    stroke-width:3px;
+    fill: none;
+}
+
+.clock__clock-icon-fill {
+    fill: rgba(255, 255, 255, 0.9);
+    stroke: none;
+}
+
+.clock__clock-icon-dot {
+    stroke: none;
+    fill: rgba(180, 0, 0, 1);
+}
+
+.clock__sunrise {
+    transform: rotate(19deg) translateX(-250px) rotate(-19deg);
+}
+
+.clock__moonrise {
+    transform: rotate(19deg) translateX(-175px) rotate(-19deg);
+}
+
+.clock__sunset {
+    transform: rotate(-19deg) translateX(250px) rotate(19deg);
+}
+
+.clock__moonset {
+    transform: rotate(-19deg) translateX(175px) rotate(19deg);
+}
+
+.clock__clock-icon-hands {
+    stroke-width: 3px;
+    stroke: rgba(180, 0, 0, 1);
+}
+
+@font-face {
+    font-family: "numerals";
+    src: url("../fonts/Manygo Serif.woff") format('woff');
+}
+
+.clock__week {
+    font-size: 1.2em;
+    fill: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+.clock__week--end {
+    fill: rgba(180, 0, 0, 0.8);
+}
+
+.clock__week-number {
+    stroke: none;
+    fill:rgba(0, 0, 0, 0.5);
+}
+
+.clock__numbers {
+    font-size: 15em;
+    fill: rgba(255, 255, 255, 0.8);
+    font-family: numerals;
+}
+
+.clock__numbers--I {
+    transform: rotate(-63deg);
+}
+
+.clock__numbers--II {
+    transform: rotate(-35deg);
+}
+
+.clock__numbers--III {
+    transform: rotate(-6deg);    
+}
+
+.clock__numbers--IV {
+    transform: rotate(24deg);    
+}
+
+.clock__numbers--V {
+    transform: rotate(57deg);    
+}
+
+.clock__numbers--VI {
+    transform: rotate(84deg);    
+}
+
+.clock__numbers--VII {
+    transform: rotate(111deg);    
+}
+
+.clock__numbers--VIII {
+    transform: rotate(141deg);    
+}
+
+.clock__numbers--X {
+    transform: rotate(206deg);    
+}
+
+.clock__numbers--XI {
+    transform: rotate(231deg);    
+}
+
+.clock__numbers--IX {
+    transform: rotate(175deg);    
+}
+
+.clock__numbers--XII {
+    transform: rotate(-99deg);
+}
+
+.clock__months {
+    font-size: 4em;
+    font-variant: small-caps;
+    word-spacing: 2.2em;
+    fill:rgba(165, 165, 165, 0.8);
+    font-family: monospace;
+}
+
+.clock__month-progress {
+    stroke: none;
+    fill: rgba(0, 0, 0, 0.8);
+}
+
+.clock__month-day {
+    stroke: none;
+    fill: rgba(255, 255, 255, 0.8);
+    font-size: 3em;
+}
+
+.clock__year {
+    fill:none;
+    stroke:rgba(0, 0, 0, 0.8);
+    stroke-width: 45;
+}
+
+.clock__year--base {
+    fill:none;
+    stroke:rgba(0, 0, 0, 0.4);
+    stroke-width: 45;
+}
+
+.clock__temperature {
+    fill: rgba(255, 236, 151, 0.4)
+}
+
+.clock__temperature--mark {
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 1px;
+}
+
+.clock__temperature--max-min {
+    fill: rgba(255, 208, 208, 0.4);
+}
+
+.clock__moon--shadow {
+    fill: rgba(0, 0, 0, 0.2);
+}
+
+.clock__temperature--current {
+    stroke: rgba(180, 0, 0, 1);
+    stroke-width: 2px;
+}
+
+/* Icons */
+.icon {
+    color: var(--heighlight-color);
+}
+
+.icon--clickable {
+    cursor: pointer;
+}
+
+.icon--settings {
+    padding-right: 1em
+}
+
+.icon--panel {
+    float: right;
+}
+
+.clock__label {
+    fill: rgba(255, 255, 255, 0.8);
+    font-size: 1.5em;
+}
+
+.header__icon {
+    font-size: 2em;
+    padding-right: 0.5em;
+}
+
+/* sport */
+.sport {
+    display: grid;
+    grid-template-areas:
+        'soccerlogo previoussoccer cricketlogo cricketseries footballlogo previousfootball'
+        'soccerlogo nextsoccer cricketlogo cricketteams footballlogo nextfootball';
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    float: right;
+}
+
+.sport__logo__link {
+    text-decoration: none;
+    filter: grayscale(100%);
+}
+
+.sport__logo__link:hover {
+    filter: none;
+}
+
+.sport__previoussoccer--winner {
+    font-weight: bold;
+}
+
+/* Soccer */
+.soccer__logo {
+    grid-area: soccerlogo;
+}
+
+.soccer__nextsoccer {
+    grid-area: nextsoccer;
+    color: var(--heighlight-color);
+}
+
+.soccer__previoussoccer {
+    grid-area: previoussoccer;
+    color: var(--heighlight-color);
+}
+
+.soccer__previoussoccer--winner {
+    font-weight: bold;
+}
+
+.soccer__logo__img {
+    width: 35px;
+    padding-right: 10px;
+}
+
+/* Cricket */
+.cricket__logo {
+    grid-area: cricketlogo;
+}
+
+.cricket__logo__img {
+    width: 25px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.cricket__cricketseries {
+    grid-area: cricketseries;
+    color: var(--heighlight-color);
+}
+
+.cricket__cricketteams {
+    grid-area: cricketteams;
+    color: var(--heighlight-color);
+}
+
+/* Football */
+.football__logo {
+    grid-area: footballlogo;
+}
+
+.football__logo__img {
+    width: 35px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.football__nextfootball {
+    grid-area: nextfootball;
+    color: var(--heighlight-color);
+}
+
+.football__previousfootball {
+    grid-area: previousfootball;
+    color: var(--heighlight-color);
+}
+
+.football__previousfootball--winner {
+    font-weight: bold;
+}
+
+/* Header */
+
+.header {
+    padding: 1em;
+    grid-area: header;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.header__a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.header__a:hover {
+    /* Don't be too angry with me for using important,
+        it's the only way to override the dynamic 
+        styles I'm adding the elements via the js */
+    color: var(--heighlight-color) !important;
+    text-shadow: 0 0 15px white;
+}
+
+
+/* Main */
+
+.main {
+    padding: 1em;
+    grid-area: main;
+
+    display: grid;
+
+    grid-template-areas:
+        'pullrequests clock'
+        'workitems clock'
+        'issues clock';
+
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: auto auto auto;
+}
+
+.pullrequests {
+    grid-area: pullrequests;
+}
+
+.workitems {
+    grid-area: workitems;
+}
+
+.issues {
+    grid-area: issues;
+}
+
+.other {
+    grid-area: other;
+}
+
+/* Panels */
+.panel {
+    width: 40em;
+    backdrop-filter: blur(4px);
+    margin: 1em;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.panel--shadow {
+    box-shadow: 5px 5px #00000055;
+}
+
+.panel__title {
+    display: block;
+    padding: 1em;
+    color: var(--heighlight-color);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.panel__title>a {
+    color: var(--heighlight-color);
+    text-decoration: none;
+}
+
+.panel__title:hover {
+    backdrop-filter: brightness(60%);
+}
+
+.panel__item {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.panel__item:hover {
+    backdrop-filter: brightness(80%);
+}
+
+.panel__link {
+    color: var(--heighlight-color);
+    text-decoration: none;
+}
+
+.panel__status {
+    padding-right: 0.5em;
+    font-weight: bold;
+    color: var(--heighlight-color);
+}
+
+.panel__icon {
+    width: 20px;
+    padding-right: 0.5em;
+    vertical-align: top;
+}
+
+.panel__icon--child {
+    margin-left: 1em;
+}
+
+/* Footer */
+
+.footer {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--heighlight-color);
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    grid-area: footer;
+    backdrop-filter: blur(4px);
+}
+
+.footer__author {
+    float: left;
+}
+
+.footer__image-credit {
+    float: right;
+}
+
+.footer__a {
+    color: var(--heighlight-color);
+    text-decoration: none;
+}
+
+/* Settigs */
+
+.settings {
+    z-index: 10;
+    position: fixed;
+    width: 30%;
+    height: 30%;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--heighlight-color);
+    border-radius: 1em;
+    padding: 2em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.setting__input {
+    background: none;
+    border: none;
+    color: var(--heighlight-color);
+    width: 100%;
+    text-align: center;
+}
+
+.settings--open {
+    display: block;
+}
+
+.settings--closed {
+    display: none;
+}
