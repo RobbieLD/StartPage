@@ -1,0 +1,26 @@
+[
+    {
+        "project": {
+            "shortName": "DEMO",
+            "iconUrl": "icons/tasks-solid.svg"
+        },
+        "numberInProject": 123,
+        "summary": "Write some amazing code"
+    },
+    {
+        "project": {
+            "shortName": "DEMO",
+            "iconUrl": "icons/tasks-solid.svg"
+        },
+        "numberInProject": 456,
+        "summary": "Check football scores"
+    },
+    {
+        "project": {
+            "shortName": "DEMO",
+            "iconUrl": "icons/tasks-solid.svg"
+        },
+        "numberInProject": 798,
+        "summary": "Watch some quality YouTube"
+    }
+]
