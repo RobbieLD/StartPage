@@ -10,8 +10,6 @@
     "http://api.football-data.org/",
     "https://api.openweathermap.org/",
     "https://www.cricket.com.au/",
-    "https://api.ffa.football/",
-    "https://dev.azure.com/",
-    "https://track.calrom.com/"
+    "https://api.ffa.football/"
   ]
 }
