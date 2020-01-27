@@ -575,6 +575,8 @@ body {
     width: 20px;
     padding-right: 0.5em;
     vertical-align: top;
+    color: white;
+    font-size: 1.3em;
 }
 
 .panel__icon--child {

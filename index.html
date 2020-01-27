@@ -44,7 +44,7 @@
         <span class="icon header__icon">
             <a href="https://www.ebay.co.uk/" class="header__a lightvibrant" data-swatch="color" target="_blank"><i class="fab fa-ebay"></i></a>
         </span>
-        
+
 
         <div class="sport">
             <!-- Soccer -->
@@ -89,7 +89,13 @@
                 <a href="https://track.calrom.com" target="_blank">YouTrack Issues</a>
                 <span id="issueRefreshBtn" class="icon icon--clickable icon--panel"><i class="fas fa-sync-alt"></i></span>
             </div>
-            <div id="issues"></div>
+            <div id="issues">
+                <div class="panel__item"><i class="fas fa-project-diagram panel__icon"></i><a href="#" target="_blank" class="panel__link">PROJ-123: Fix the bug where everything crashes</a></div>
+                <div class="panel__item"><i class="fas fa-project-diagram panel__icon"></i><a href="#" target="_blank" class="panel__link">PROJ-456: Add new functionality</a></div>
+                <div class="panel__item"><i class="fas fa-project-diagram panel__icon"></i><a href="#" target="_blank" class="panel__link">PROJ-789: Debug issues</a></div>
+                <div class="panel__item"><i class="fas fa-project-diagram panel__icon"></i><a href="#" target="_blank" class="panel__link">PROJ-147: Investigate why nothing works</a></div>
+                <div class="panel__item"><i class="fas fa-project-diagram panel__icon"></i><a href="#" target="_blank" class="panel__link">PROJ-852: Fill in time tracking info</a></div>
+            </div>
         </div>
         <!-- Clock -->
         <div id="clock" class="clock muted" data-swatch="backgroundColor">
@@ -597,7 +603,9 @@
                 <text class="clock__weather__label vibrant" data-swatch="fill" x="110" y="10">E</text>
 
                 <!-- Weather radar arrow -->
-                <line id="weatherArrow" class="clock__weather-radar__arrow darkvibrant" data-swatch="stroke" marker-end="url(#arrow)" x1="0" x2="0" y1="0" y2="100"><title></title></line>
+                <line id="weatherArrow" class="clock__weather-radar__arrow darkvibrant" data-swatch="stroke" marker-end="url(#arrow)" x1="0" x2="0" y1="0" y2="100">
+                    <title></title>
+                </line>
 
                 <!-- Sunrise/Sunset and Moonrise/Moonset Times -->
                 <g id="sunrise" class="clock__sunrise">
@@ -615,7 +623,7 @@
                     <title></title>
                     <circle cx="0" cy="0" r="15" class="clock__clock-icon-fill darkmuted" data-swatch="fill"></circle>
                     <circle cx="0" cy="0" r="15" class="clock__clock-icon-stroke muted" data-swatch="stroke"></circle>
-                    
+
                     <line x1="0" y1="0" x2="0" y2="-12" class="clock__clock-icon-hands vibrant minute" data-swatch="stroke"></line>
                     <line x1="0" y1="0" x2="0" y2="-8" class="clock__clock-icon-hands vibrant hour" data-swatch="stroke"></line>
 
@@ -644,7 +652,7 @@
                     <circle cx="0" cy="0" r="3" class="clock__clock-icon-dot vibrant" data-swatch="fill"></circle>
                 </g>
 
-  
+
                 <!-- Day of the month -->
                 <g>
                     <path id="monthProgress" class="clock__month-progress darkvibrant" data-swatch="fill" d="M 225 -50 A 50 50 0 0 1 275 0 L 250 0 A 25 25 0 0 0 225 -25 z"></path>
@@ -791,7 +799,6 @@
     <script src="js/weather.js"></script>
     <script src="js/moon.js"></script>
     <script src="js/azure.js"></script>
-    <script src="js/youtrack.js"></script>
     <script src="js/background.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/init.js"></script>

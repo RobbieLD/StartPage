@@ -132,21 +132,6 @@ class Init {
             showWorkPanels: settings.showWorkPanels
         };
 
-        // Youtrack
-        this.youtrackOptions = {
-            key: settings.getSetting('youtrack_api_key'),
-            issuesPanelId: 'issues',
-            panelIconClassName: 'panel__icon',
-            panelClassName: 'panel__item',
-            panelLinkClassName: 'panel__link',
-            issuesRefreshButtonId: 'issueRefreshBtn',
-            work: settings.getSetting('work'),
-            workPanels: ['issuespanel'],
-            maxTitleLength: 80,
-            hideWorkPanels: settings.hideWorkPanel,
-            showWorkPanels: settings.showWorkPanels
-        };
-
         // Moon
         this.moonOptions = {
             date: now,
@@ -164,7 +149,6 @@ class Init {
 
     _work() {
         new Azure(this.azureOptions).load();
-        new YouTrack(this.youtrackOptions).load();
     }
 
     _sport() {
