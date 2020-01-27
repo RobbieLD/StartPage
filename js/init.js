@@ -105,11 +105,6 @@ class Init {
             apiSection: 'live-upcoming'
         };
 
-        // Soccer
-        this.soccerOptions = {
-            team: '575'
-        };
-
         // Azure
         this.azureOptions = {
             query: 'My Queries/MyIssues',
@@ -154,7 +149,6 @@ class Init {
     _sport() {
         new Football(this.footballOptions).load();
         new Cricket(this.cricketOptions).load();
-        new Soccer(this.soccerOptions).load();
     }
 
     _theme() {
