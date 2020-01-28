@@ -13,6 +13,9 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     --heighlight-color: white;
+
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 75%;
 }
 
 /* Swatches */
