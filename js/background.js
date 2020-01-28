@@ -2,7 +2,7 @@ class UnsplashBackgroundApi extends Api {
     'use strict';
 
     constructor(options) {
-        super('https://raw.githubusercontent.com/');
+        super('/');
         this.options = options;
 
         this.init = {
@@ -17,7 +17,7 @@ class UnsplashBackgroundApi extends Api {
 
     load() {
         const id = Math.floor(Math.random() * 6);
-        return this.fetchResources('RobbieLD/StartPage/gh-pages/data/theme_' + id + '.json', this.init).then(response => {
+        return this.fetchResources('data/theme_' + id + '.json', this.init).then(response => {
             // Handle the data response
             let imageUrl = response.data.urls.full + '&auto=format&w=' + window.innerWidth + '&h=' + window.innerHeight;
             
