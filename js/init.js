@@ -89,44 +89,6 @@ class Init {
             timeFormatOptions: timeFormat
         };
 
-        // Football
-        this.footballOptions = {
-            key: settings.getSetting('football_data_api_key'),
-            team: settings.getSetting('football_team_id')
-        };
-
-        // Cricket
-        this.cricketOptions = {
-            team: '1',
-            gender: 'men',
-            cricketSeriesElementClassName: 'cricket__cricketseries',
-            cricketTeamElementClassName: 'cricket__cricketteams',
-            teamName: 'Australia Men',
-            apiSection: 'live-upcoming'
-        };
-
-        // Azure
-        this.azureOptions = {
-            query: 'My Queries/MyIssues',
-            organisation: 'calromltd',
-            project: 'InclusiveTour',
-            workItemsRefreshButtonId: 'workItemsRefreshBtn',
-            pullRequestsRefreshButtonId: 'pullRequestsRefreshBtn',
-            workItemsPanelId: 'workitems',
-            pullRequestsPanelId: 'pullrequests',
-            panelIconClassName: 'panel__icon',
-            panelIconChildClassName:'panel__icon--child',
-            panelClassName: 'panel__item',
-            panelLinkClassName: 'panel__link',
-            maxTitleLength: 80,
-            userId: settings.getSetting('azure_user_id'),
-            key: btoa(settings.getSetting('azure_api_key')),
-            work: settings.getSetting('work'),
-            workPanels: ['workitemspanel', 'pullrequestspanel'],
-            hideWorkPanels: settings.hideWorkPanel,
-            showWorkPanels: settings.showWorkPanels
-        };
-
         // Moon
         this.moonOptions = {
             date: now,
@@ -140,15 +102,6 @@ class Init {
             moonSetElementId: 'moonset',
             timeFormatOptions: timeFormat
         };
-    }
-
-    _work() {
-        new Azure(this.azureOptions).load();
-    }
-
-    _sport() {
-        new Football(this.footballOptions).load();
-        new Cricket(this.cricketOptions).load();
     }
 
     _theme() {
@@ -169,7 +122,5 @@ class Init {
 
     go() {
         this._theme();
-        this._sport();
-        this._work();
     }
 }

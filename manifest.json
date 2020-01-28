@@ -7,8 +7,6 @@
   },
   "permissions": [
     "https://api.unsplash.com/",
-    "http://api.football-data.org/",
     "https://api.openweathermap.org/",
-    "https://www.cricket.com.au/"
   ]
 }
