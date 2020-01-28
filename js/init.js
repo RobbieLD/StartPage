@@ -4,20 +4,6 @@ class Init {
         // Everything is driven off this date
         const now = new Date();
 
-        // Settings
-        this.settingKeys = ['unsplash_api_key', 'open_weather_api_key', 'location'];
-        this.settingsOptions = {
-            settingsPanelId: 'settings',
-            settingsPanelOpenClass: 'settings--open',
-            settingsPanelClosedClass: 'settings--closed',
-            viewPanels: {
-                work: ['pullrequestspanel', 'workitemspanel', 'issuespanel'],
-                default: ['clock', 'header']
-            }
-        };
-
-        let settings = new Settings(this.settingKeys, this.settingsOptions);
-
         // General Settings
         const timeFormat = {
             hour: '2-digit',
@@ -28,16 +14,15 @@ class Init {
         this.backgroundOptions = {
             rateLimitPanelId: 'rateLimit',
             imageCreditPanelId: 'imageCredit',
-            key: settings.getSetting('unsplash_api_key'),
-            query: settings.getSetting('unsplash_query'),
             imageCreditMaxLength: 200
         };
 
         // Weather
         this.weatherOptions = {
             clockId: 'clock',
-            key: settings.getSetting('open_weather_api_key'),
-            location: settings.getSetting('location'),
+            // This a free api demo key from openweathermaps.orgs
+            key: '17a96bbb428b358618a5b8ebf7b4fa22',
+            location: 'London',
             locatonElementId: 'location',
             temperatureUnits: "° C",
             upperTemp: 298.15,

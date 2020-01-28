@@ -6,7 +6,7 @@
     "newtab": "index.html"
   },
   "permissions": [
-    "https://api.unsplash.com/",
-    "https://api.openweathermap.org/",
+    "https://raw.githubusercontent.com/",
+    "https://api.openweathermap.org/"
   ]
 }

@@ -2,7 +2,7 @@ class UnsplashBackgroundApi extends Api {
     'use strict';
 
     constructor(options) {
-        super('https://api.unsplash.com');
+        super('https://raw.githubusercontent.com/');
         this.options = options;
 
         this.init = {
@@ -16,8 +16,8 @@ class UnsplashBackgroundApi extends Api {
     }
 
     load() {
-        // TODO: Fix long location messages
-        return this.fetchResources('/photos/random?orientation=landscape&query=' + this.options.query, this.init).then(response => {
+        const id = Math.floor(Math.random() * 6);
+        return this.fetchResources('RobbieLD/StartPage/gh-pages/data/theme_' + id + '.json', this.init).then(response => {
             // Handle the data response
             let imageUrl = response.data.urls.full + '&auto=format&w=' + window.innerWidth + '&h=' + window.innerHeight;
             
