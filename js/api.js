@@ -1,9 +1,4 @@
 class Api {
-    'use strict';
-    static apiCount = 0;
-    static apiTime = 0;
-    static apiStats = '';
-
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
     }
@@ -33,3 +28,7 @@ class Api {
         }
     }
 }
+
+Api.apiCount = 0;
+Api.apiTime = 0;
+Api.apiStats = '';
