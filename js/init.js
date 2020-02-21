@@ -60,6 +60,7 @@ class Init {
             weekArrowElementId: 'weekArrow',
             monthProgressElementId: 'monthProgress',
             monthNumberElementId: 'monthNumber',
+            yeahDayNumberElementId: 'yeahDayNumber',
             weekNumberElemenetId: 'weekNumber'
         };
 

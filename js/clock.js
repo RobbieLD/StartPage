@@ -11,6 +11,7 @@ class Clock {
         this._setYear(this.options.date);
         this._setWeek(this.options.date);
         this._setMonthDay(this.options.date);
+        this._setDayOfYear(this.options.date);
     }
 
     _getDaysInMonth(now) {
@@ -31,6 +32,11 @@ class Clock {
         const monthNumber = now.getDate();
         const monthNumberElemenent = document.getElementById(this.options.monthNumberElementId);
         monthNumberElemenent.innerHTML = monthNumber.toString().padStart(2, '0');
+    }
+
+    _setDayOfYear(now) {
+        const element = document.getElementById(this.options.yeahDayNumberElementId);
+        element.innerHTML = this._calculateDayOfYear(now).toString().padStart(3, '0');
     }
 
     _setWeek(now) {
@@ -72,20 +78,28 @@ class Clock {
         return ~~((now - date + this._serial(this._weekday(date) + 5)) / this._serial(7));
     }
 
-    _yearserial(date) { 
-        return (new Date(date)).getFullYear(); 
+    _calculateDayOfYear(now) {
+        const start = new Date(now.getFullYear(), 0, 0);
+        const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+        const oneDay = 1000 * 60 * 60 * 24;
+        const day = Math.floor(diff / oneDay);
+        return day;
     }
 
-    _weekday(date) { 
-        return (new Date(date)).getDay() + 1; 
+    _yearserial(date) {
+        return (new Date(date)).getFullYear();
     }
 
-    _dateserial(year, month, day) { 
-        return (new Date(year, month - 1, day).valueOf()); 
+    _weekday(date) {
+        return (new Date(date)).getDay() + 1;
     }
 
-    _serial(days) { 
-        return 86400000 * days; 
+    _dateserial(year, month, day) {
+        return (new Date(year, month - 1, day).valueOf());
+    }
+
+    _serial(days) {
+        return 86400000 * days;
     }
 
     _setAnimation(now) {

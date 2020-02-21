@@ -312,6 +312,13 @@ body {
     font-size: 3em;
 }
 
+.clock__month-dayOfYear {
+    stroke: none;
+    fill: rgba(255, 255, 255, 0.8);
+    font-size: 1.5em;
+    letter-spacing: 5px;
+}
+
 .clock__year {
     fill:none;
     stroke:rgba(0, 0, 0, 0.8);
