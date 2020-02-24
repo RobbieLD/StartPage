@@ -23,6 +23,7 @@ The UI elements explanation as as follows.
   - _Pressure_: The current atmospheric pressure is shown on the outer half of the rigth hand dial. 
   - _Humidity_: The current humidity is shown on the inner half on the right hand dial.
   - _Date_: The current date of shown on the right hand circle dial along with the progress though the month as a darker band around the outside. 
+  - _Day Of The Year_: The day number of the year (below the day of the month)
 
 ## Installation
 To use this start page you'll need to pull a copy of the code. It's all basic front end code and doesn't need to be transpiled to work in chrome. You probably will want to configured it some what to your own needs as described in the congifuration section below. I've decided that since this is just a person project for my own use I'm not going to relase a packaged version since for this project to be any use to anyone but me it'll need a little modification. 
