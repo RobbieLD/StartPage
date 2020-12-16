@@ -591,6 +591,18 @@ body {
     margin-left: 1em;
 }
 
+.panel__icon--approved {
+    border-left: solid darkcyan 5px;
+}
+
+.panel__icon--to-do {
+    border-left: solid grey 5px;
+}
+
+.panel__icon--in-progress {
+    border-left: solid greenyellow 5px;
+}
+
 /* Footer */
 
 .footer {

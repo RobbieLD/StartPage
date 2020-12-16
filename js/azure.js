@@ -74,6 +74,13 @@ class Azure extends Api {
             workItemIcon.src = w.icon;
             workItemIcon.classList.add(this.options.panelIconClassName);
 
+            let suffix = w.state.replace(' ', '-');
+            suffix = suffix.toLowerCase();
+
+            let statusClass = this.options.panelIconClassName + "--" + suffix
+
+            workItemIcon.classList.add(statusClass);
+
             if (w.isChild) {
                 workItemIcon.classList.add(this.options.panelIconChildClassName);
             }
